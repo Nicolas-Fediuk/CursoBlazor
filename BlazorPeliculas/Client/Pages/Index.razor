@@ -1,0 +1,32 @@
+﻿@page "/"
+
+
+@{
+    string nombre = "Nicolas";
+
+    void click(){
+        Console.WriteLine("hizo click");
+    }
+
+    Pelicula Iron = ObternerPelicula();
+
+    Pelicula ObternerPelicula()
+    {
+        return new Pelicula
+        {
+            Titulo = "Iron man",
+            FechaLanzamiento = new DateTime(2008, 01, 01)
+        };
+    }
+
+}
+
+<h1>Hello @Utilidades.Upper(nombre)</h1>
+
+<button @onclick=@click>Click</button>
+
+<div>
+    <h3>Pelicula</h3>
+    <p>titulo: @Iron.Titulo</p>
+    <p>Fecha de lanzamiento: @Iron.FechaLanzamiento.ToString("dd mm yyyy")</p>
+</div>
