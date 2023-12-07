@@ -1,32 +1,32 @@
 ﻿@page "/"
 
+@* En pague se cuardan los ponentes rooteales
+En Shared se guardan los componentes no rooteables que se reutilizan en toda la aplicacion  *@
 
-@{
+@code{
+
     string nombre = "Nicolas";
 
     void click(){
         Console.WriteLine("hizo click");
     }
 
-    Pelicula Iron = ObternerPelicula();
-
-    Pelicula ObternerPelicula()
+    List<Pelicula> ObtenerPeliculas()
     {
-        return new Pelicula
+        return new List<Pelicula>()
         {
-            Titulo = "Iron man",
-            FechaLanzamiento = new DateTime(2008, 01, 01)
+            new Pelicula{Titulo = "Hulk", FechaLanzamiento = new DateTime(2008, 01, 01)},
+            new Pelicula{Titulo = "Betty", FechaLanzamiento = new DateTime(2006, 02, 01)},
+            new Pelicula{Titulo = "Gol", FechaLanzamiento = new DateTime(2001, 03, 01)}
         };
     }
-
 }
 
 <h1>Hello @Utilidades.Upper(nombre)</h1>
 
 <button @onclick=@click>Click</button>
 
-<div>
-    <h3>Pelicula</h3>
-    <p>titulo: @Iron.Titulo</p>
-    <p>Fecha de lanzamiento: @Iron.FechaLanzamiento.ToString("dd mm yyyy")</p>
-</div>
+@* asi se llama al componente *@
+<ListadoPelicula peliculas="ObtenerPeliculas()"/>
+
+

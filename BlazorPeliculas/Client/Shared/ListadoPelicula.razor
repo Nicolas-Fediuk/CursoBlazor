@@ -1,0 +1,34 @@
+﻿@if (peliculas is null)
+{
+    <img src="https://media3.giphy.com/media/3oEjI6SIIHBdRxXI40/200w.gif?cid=6c09b952ba2mr6ur9tpz6qpif7w9538mlw6vtekcsnlgnral&ep=v1_gifs_search&rid=200w.gif&ct=g" />
+}
+else
+{
+    <div>
+
+        @foreach (Pelicula peli in peliculas)
+        {
+            <PeliculaIndividual pelicula="peli"/>
+        }
+
+    </div>
+}
+
+@code {
+
+    //el listado de peliculas va hacer el parametro
+    [Parameter]
+    //parametro si o si obligatorio
+    [EditorRequired]
+    public List<Pelicula> peliculas { get; set; }
+
+    //ciclo de vida de un componente
+    // protected override async Task OnInitializedAsync()
+    // {
+    //     await Task.Delay(3000);
+    //     peliculas = ObtenerPeliculas();
+    // }
+
+    
+
+}
