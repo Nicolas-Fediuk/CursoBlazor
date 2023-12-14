@@ -20,6 +20,11 @@ En Shared se guardan los componentes no rooteables que se reutilizan en toda la 
             new Pelicula{Titulo = "Gol", FechaLanzamiento = new DateTime(2001, 03, 01)}
         };
     }
+
+    private Dictionary<string, object> EjemploTextboxParametros = new Dictionary<string, object>(){
+                                                                        {"placeholder", "new"},
+                                                                        {"disabled", "true"}
+                                                                    };
 }
 
 <h1>Hello @Utilidades.Upper(nombre)</h1>
@@ -28,5 +33,15 @@ En Shared se guardan los componentes no rooteables que se reutilizan en toda la 
 
 @* asi se llama al componente *@
 <ListadoPelicula peliculas="ObtenerPeliculas()"/>
+
+<h3>Crear nueva pelicula</h3>
+<EjemploTexbox Placeholder="Nombre pelicula"/>
+
+@* parametros arbitrarios mas usandos, si en el attribute no se pasa nada, se usa el de por defecto*@
+<EjemploTexbox palceholder="Por defecto" @attributes="@(EjemploTextboxParametros)" />
+
+<BindEvento/>
+
+<BindGetSetDemo/>
 
 

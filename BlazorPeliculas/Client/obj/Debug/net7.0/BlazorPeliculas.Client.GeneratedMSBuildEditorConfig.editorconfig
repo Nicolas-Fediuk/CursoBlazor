@@ -32,6 +32,18 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/nico/Desktop/CursoBlazor/BlazorPeliculas/Client/Shared/BindEvento.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXEJpbmRFdmVudG8ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nico/Desktop/CursoBlazor/BlazorPeliculas/Client/Shared/BindGetSetDemo.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXEJpbmRHZXRTZXREZW1vLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nico/Desktop/CursoBlazor/BlazorPeliculas/Client/Shared/EjemploTexbox.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXEVqZW1wbG9UZXhib3gucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/nico/Desktop/CursoBlazor/BlazorPeliculas/Client/Shared/ListadoPelicula.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXExpc3RhZG9QZWxpY3VsYS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 

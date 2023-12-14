@@ -6,9 +6,16 @@ else
 {
     <div>
 
+        @* onchange es cuando se preoduce algun cambio  *@
+        @* <input type="checkbox" @onchange="@(() => MostrarBotones = !MostrarBotones)"><span>Mostrar Pelicula</span> *@
+
+        @* sincroniza el checkbox con la variable *@
+        <input type="checkbox" @bind="MostrarBotones"><span>Mostrar Pelicula</span>
+
+
         @foreach (Pelicula peli in peliculas)
         {
-            <PeliculaIndividual pelicula="peli"/>
+            <PeliculaIndividual pelicula="peli" MostrarBotones = "MostrarBotones"/>
         }
 
     </div>
@@ -28,6 +35,8 @@ else
     //     await Task.Delay(3000);
     //     peliculas = ObtenerPeliculas();
     // }
+
+    bool MostrarBotones = false;
 
     
 
