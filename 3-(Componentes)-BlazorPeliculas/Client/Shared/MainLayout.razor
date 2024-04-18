@@ -1,0 +1,37 @@
+﻿@inherits LayoutComponentBase
+
+<div class="page">
+    <div class="sidebar">
+        <NavMenu />
+    </div>
+
+    <main>
+        <div class="top-row px-4">
+            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
+        </div>
+
+        <article class="content px-4">
+            
+            @*<CascadingValue Value="@Color" Name="Color">
+                <CascadingValue Value="@Size" Name="Size">
+                    @Body
+                </CascadingValue>
+            </CascadingValue>*@
+
+
+            <CascadingValue Value="@app">
+                @Body
+            </CascadingValue>
+
+            <hr />
+            Nicolas
+        </article>
+    </main>
+</div>
+
+@code{
+    //private string Color = "red";
+    //private string Size = "12px";
+
+    AppState app = new AppState();
+}

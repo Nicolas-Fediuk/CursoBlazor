@@ -1,0 +1,9 @@
+﻿@* parametros arbitrarios *@
+<input type="text" @attributes="ParametrosAdicionales">
+
+@code {
+    //captura valores no coincidentes
+    // en este caso podemos pasarle los atributos del campo texto 
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object> ParametrosAdicionales { get; set; }
+}

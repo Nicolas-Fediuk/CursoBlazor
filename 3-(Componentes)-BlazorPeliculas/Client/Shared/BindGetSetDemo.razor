@@ -1,0 +1,21 @@
+﻿<h3>BindGetSetDemo</h3>
+
+@*con bind puedo hacer una operacion de lectura y escritura
+con bind get y set puedo separar esta operacion 
+en este caso el get toma el valor del texto
+y el set lo setea en mayuscula*@
+
+<input type="text" @bind:get="texto" @bind:set="SetAsync" @bind:event="oninput" />
+
+<p>
+    Texto: @texto
+</p>
+@code {
+    private string texto = string.Empty;
+
+    private Task SetAsync(string valor)
+    {
+        texto = valor.ToUpper();
+        return Task.CompletedTask;
+    }
+}

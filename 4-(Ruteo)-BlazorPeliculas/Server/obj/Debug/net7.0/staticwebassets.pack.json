@@ -1,0 +1,49 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\nfediuk\\Desktop\\CursoBlazor\\4-(Ruteo)-BlazorPeliculas\\Server\\wwwroot\\pelicula\\093ef8a3-c631-45f1-a8ab-46e61ad0f9d6.jpg",
+      "PackagePath": "staticwebassets\\pelicula\\093ef8a3-c631-45f1-a8ab-46e61ad0f9d6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\nfediuk\\Desktop\\CursoBlazor\\4-(Ruteo)-BlazorPeliculas\\Server\\wwwroot\\pelicula\\3c00255b-6e80-4174-a184-6d4800c96628.jpg",
+      "PackagePath": "staticwebassets\\pelicula\\3c00255b-6e80-4174-a184-6d4800c96628.jpg"
+    },
+    {
+      "Id": "C:\\Users\\nfediuk\\Desktop\\CursoBlazor\\4-(Ruteo)-BlazorPeliculas\\Server\\wwwroot\\pelicula\\6fc649e9-ccdf-4370-82b8-c5bc9a9d8b15.jpg",
+      "PackagePath": "staticwebassets\\pelicula\\6fc649e9-ccdf-4370-82b8-c5bc9a9d8b15.jpg"
+    },
+    {
+      "Id": "C:\\Users\\nfediuk\\Desktop\\CursoBlazor\\4-(Ruteo)-BlazorPeliculas\\Server\\wwwroot\\pelicula\\9dcbb846-2719-4d2d-9c87-2b8cd5ec4357.jpg",
+      "PackagePath": "staticwebassets\\pelicula\\9dcbb846-2719-4d2d-9c87-2b8cd5ec4357.jpg"
+    },
+    {
+      "Id": "C:\\Users\\nfediuk\\Desktop\\CursoBlazor\\4-(Ruteo)-BlazorPeliculas\\Server\\wwwroot\\personas\\68fca06e-dd72-4079-8bc6-5c593630761d.jpg",
+      "PackagePath": "staticwebassets\\personas\\68fca06e-dd72-4079-8bc6-5c593630761d.jpg"
+    },
+    {
+      "Id": "C:\\Users\\nfediuk\\Desktop\\CursoBlazor\\4-(Ruteo)-BlazorPeliculas\\Server\\wwwroot\\personas\\6ad1d0dd-4696-4fe4-b98b-98bb8a36c223.jpg",
+      "PackagePath": "staticwebassets\\personas\\6ad1d0dd-4696-4fe4-b98b-98bb8a36c223.jpg"
+    },
+    {
+      "Id": "C:\\Users\\nfediuk\\Desktop\\CursoBlazor\\4-(Ruteo)-BlazorPeliculas\\Server\\wwwroot\\personas\\e8a3f43c-ce0f-4ad1-925f-d789bf4ebb45.jpg",
+      "PackagePath": "staticwebassets\\personas\\e8a3f43c-ce0f-4ad1-925f-d789bf4ebb45.jpg"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.BlazorPeliculas.Server.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.build.BlazorPeliculas.Server.props",
+      "PackagePath": "build\\BlazorPeliculas.Server.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildMultiTargeting.BlazorPeliculas.Server.props",
+      "PackagePath": "buildMultiTargeting\\BlazorPeliculas.Server.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildTransitive.BlazorPeliculas.Server.props",
+      "PackagePath": "buildTransitive\\BlazorPeliculas.Server.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

@@ -1,0 +1,58 @@
+﻿@typeparam Titem
+
+@if (Listado is null)
+{
+    if (Cargando is null)
+    {
+        <img alt="cargando" src="https://media3.giphy.com/media/3oEjI6SIIHBdRxXI40/200w.gif?cid=6c09b952ba2mr6ur9tpz6qpif7w9538mlw6vtekcsnlgnral&ep=v1_gifs_search&rid=200w.gif&ct=g" />
+    }
+    else
+    {
+        @Cargando
+    }
+
+}
+else if (Listado.Count == 0)
+{
+    if (NoHyaRegistros is null)
+    {
+        <p>No hay nada</p>
+    }
+    else
+    {
+        @NoHyaRegistros
+    }
+}
+else
+{
+    if(HayRegistros is not null)
+    {
+        @foreach (var elemento in Listado)
+        {
+            @HayRegistros(elemento)
+        }
+    }
+    else
+    {
+        @HayRegistrosCompleto
+    }
+
+}
+
+@code {
+    [Parameter]
+    public RenderFragment Cargando { get; set; }
+
+    [Parameter]
+    public RenderFragment NoHyaRegistros { get; set; }
+
+    [Parameter]
+    public RenderFragment<Titem> HayRegistros { get; set; }
+
+    [Parameter]
+    public RenderFragment HayRegistrosCompleto { get; set; }
+
+    [Parameter]
+    [EditorRequired]
+    public List<Titem> Listado { get; set; }
+}

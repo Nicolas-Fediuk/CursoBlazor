@@ -1,0 +1,12 @@
+﻿<h3>BindEvento</h3>
+
+<p>
+    @* el bind trabajo por defecto con el onchange *@
+    <input @bind="@valor" @bind:event="oninput"/>
+</p>
+
+El valor es: @valor
+
+@code {
+    private string valor { get; set; }
+}

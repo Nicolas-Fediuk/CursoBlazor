@@ -1,0 +1,28 @@
+﻿
+<h3>@pelicula.Titulo</h3>
+@if (DateTime.Now.Year == 2023)
+{
+    <span>Nuevo</span>
+}
+<p>titulo: @pelicula.Titulo</p>
+<p>Fecha de lanzamiento: @pelicula.FechaLanzamiento.ToString("dd mm yyyy")</p>
+@if (MostrarBotones)
+{
+    <div>
+        <button @onclick="@(() => EliminarPelicula.InvokeAsync(pelicula))">Borrar</button>
+    </div>
+}
+
+
+@code {
+    [Parameter]
+    [EditorRequired]
+    public Pelicula pelicula { get; set; }
+
+    [Parameter]
+    public bool MostrarBotones { get; set; } = false;
+
+    //se lo delega al componente padre 
+    [Parameter]
+    public EventCallback<Pelicula> EliminarPelicula { get; set; }
+}

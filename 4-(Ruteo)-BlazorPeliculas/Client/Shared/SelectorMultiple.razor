@@ -1,0 +1,52 @@
+﻿<div class="selecctor-multiple">
+    <ul class="selectable-ul">
+        @foreach (var item in NoSeleccionados)
+        {
+            <li @onclick=@(() => Seleccionar(item))>@item.Valor</li>
+        }
+    </ul>
+    <div class="selector-multiple-botones">
+        <button type="button" @onclick="SeleccionarTodo">>></button>
+        <button type="button" @onclick="DesSeleccionarTodo">@removerTodoTexto</button>
+    </div>
+    <ul class="selectable-ul">
+        @foreach (var item in Seleccionados)
+        {
+            <li @onclick=@(() => DesSeleccionar(item))>@item.Valor</li>
+        }
+    </ul>
+</div>
+
+@code {
+    private string removerTodoTexto = "<<";
+
+    [Parameter]
+    public List<SelecctorMultipleModel> NoSeleccionados { get; set; } = new List<SelecctorMultipleModel>();
+
+    [Parameter]
+    public List<SelecctorMultipleModel> Seleccionados { get; set; } = new List<SelecctorMultipleModel>();
+
+    private void Seleccionar(SelecctorMultipleModel item)
+    {
+        NoSeleccionados.Remove(item);
+        Seleccionados.Add(item);
+    }
+
+    private void DesSeleccionar(SelecctorMultipleModel item)
+    {
+        Seleccionados.Remove(item);
+        NoSeleccionados.Add(item);
+    }
+
+    private void SeleccionarTodo()
+    {
+        Seleccionados.AddRange(NoSeleccionados);
+        NoSeleccionados.Clear();
+    }
+
+    private void DesSeleccionarTodo()
+    {
+        NoSeleccionados.AddRange(Seleccionados);
+        Seleccionados.Clear();
+    }
+}

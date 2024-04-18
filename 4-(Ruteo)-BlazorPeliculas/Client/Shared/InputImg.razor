@@ -1,0 +1,61 @@
+﻿<div>
+    <label>@Label</label>
+    <div>
+        @*multiple = para seleccionar varias*@
+        <InputFile OnChange="OnChange" accept=".jpg,.jpeg,.png" />
+    </div>
+</div>
+
+<div>
+    @if(imagenBase64 is not null)
+    {
+        <div>
+            <div style="margin: 10px">
+                <img src="data:image/jpeg;base64, @imagenBase64" style="width:400px" />
+            </div>
+        </div>
+    }
+
+    @if (ImagenUrl is not null)
+    {
+        <div>
+            <div style="margin: 10px">
+                <img src="@ImagenUrl" style="width:400px" />
+            </div>
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public string Label { get; set; } = "Imagen";
+
+    private string? imagenBase64;
+
+    /*Si existe la foto y la quiere editar*/
+    [Parameter]
+    public string? ImagenUrl { get; set; }
+
+    [Parameter]
+    public EventCallback<string> ImagenSeleccionada { get; set; }
+
+
+    async Task OnChange(InputFileChangeEventArgs e)
+    {
+        var imagenes = e.GetMultipleFiles();
+
+        foreach(var imagen in imagenes)
+        {
+            var arrBytes = new byte[imagen.Size];
+            await imagen.OpenReadStream().ReadAsync(arrBytes);
+            imagenBase64 = Convert.ToBase64String(arrBytes);
+            ImagenUrl = null;
+
+            //Lo pasa al controlador padre
+            await ImagenSeleccionada.InvokeAsync(imagenBase64);
+
+            //forzar al controlador que muestre cauqluier cambio en la interfaz del usuario
+            StateHasChanged();
+        }
+    }
+}

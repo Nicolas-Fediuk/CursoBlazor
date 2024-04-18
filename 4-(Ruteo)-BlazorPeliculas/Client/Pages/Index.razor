@@ -1,0 +1,52 @@
+﻿@page "/"
+@page "/index"
+@inject IRepositorio repositorio 
+
+@*para poner el titulo*@
+<PageTitle>Peliculas</PageTitle>
+
+@*puedo autenticar las personas y darle permisos*@
+<AuthorizeView Roles="admin">
+    @*cuando el usuario esta autorizado*@
+    <Authorized>
+        @*asi accedo al name del Claim *@
+        <p>Estas autenticado @context.User.Identity.Name</p>
+    </Authorized>
+    @*cuando el usuario no esta  autorizado*@
+    <NotAuthorized>
+        <p>No esta autorizado ver</p>
+    </NotAuthorized>
+</AuthorizeView>
+
+<div>
+    <h3>En cartelera</h3>
+    <ListadoPelicula peliculas=EnCartelera />
+</div>
+
+<div>
+    <h3>Proximo estrenos</h3>
+    <ListadoPelicula peliculas=FuturosEstrenos />
+</div>
+
+
+@code {
+
+    public List<Pelicula>? FuturosEstrenos { get; set; }
+    public List<Pelicula>? EnCartelera { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var respuestaHTTP = await repositorio.Get<HomePageDTO>("api/peliculas");
+
+        if (respuestaHTTP.HttpResponseMessage.IsSuccessStatusCode)
+        {
+            FuturosEstrenos = respuestaHTTP.Response!.ProximosEstrenos;
+            EnCartelera = respuestaHTTP.Response.PeliculasEnCartelera;
+        }
+        else
+        {
+            Console.WriteLine(respuestaHTTP.HttpResponseMessage.IsSuccessStatusCode);
+        }
+
+    }
+}

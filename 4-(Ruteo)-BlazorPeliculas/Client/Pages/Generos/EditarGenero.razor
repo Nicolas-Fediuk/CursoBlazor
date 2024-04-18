@@ -1,0 +1,65 @@
+﻿@page "/generos/editar/{GeneroId:int}"
+@inject NavigationManager navigationManager
+@inject IRepositorio repositorio
+@inject SweetAlertService swal
+@attribute [Authorize(Roles = "admin")]
+
+<h3>Editar Genero</h3>
+
+@if(genero is null)
+{
+    <p>Cargando...</p>
+}
+else
+{
+    <FormularioGenero @ref="formularioGenero" genero="genero" OnValidSubmit="Editar" />
+}
+
+@code {
+    [Parameter]
+    public int GeneroId { get; set; }
+    private Genero genero;
+
+    private FormularioGenero formularioGenero;
+
+    protected override async Task OnInitializedAsync()
+    {
+        //api/generos/{ genero.Id} = tengo que crear este end-point en el controlador
+        var respuestaHTTP = await repositorio.Get<Genero>($"api/generos/{GeneroId}");
+
+        if (respuestaHTTP.Error)
+        {
+            if(respuestaHTTP.HttpResponseMessage.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+
+                navigationManager.NavigateTo("generos");
+            }
+            else
+            {
+                var mensajeError = await respuestaHTTP.ObtenerMensajeError();
+                await swal.FireAsync("Error", mensajeError, SweetAlertIcon.Error);
+            }
+        }
+        else
+        {
+            genero = respuestaHTTP.Response;
+        }
+    }
+
+    private async void Editar()
+    {
+        var respuestaHTTP = await repositorio.Put("api/generos", genero);
+
+        if (respuestaHTTP.Error)
+        {
+            var mensajeError = await respuestaHTTP.ObtenerMensajeError();
+            await swal.FireAsync("Error", mensajeError, SweetAlertIcon.Error);
+        }
+        else
+        {
+            await swal.FireAsync("Ok", "Genero modificado", SweetAlertIcon.Success);
+            formularioGenero.FormularioPosteadoConExito = true;
+            navigationManager.NavigateTo("generos");
+        }
+    }
+}

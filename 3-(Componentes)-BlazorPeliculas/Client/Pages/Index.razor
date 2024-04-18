@@ -1,0 +1,89 @@
+﻿@page "/"
+@inject ServicioSingleton singleton
+@inject IRepositorio repositorio 
+
+@*para poner el titulo*@
+<PageTitle>Peliculas</PageTitle>
+
+@*Para agregar cosas en la cabecera*@
+<HeadContent>
+    <meta neme="description" content="Pagina pelicula"/>
+</HeadContent>
+
+<button @onclick="LimpiarPeliculas">Limpiar peliculas</button>
+
+<p>Valor del singleton: @singleton.valor</p>
+
+@*En pague se cuardan los ponentes rooteales
+En Shared se guardan los componentes no rooteables que se reutilizan en toda la aplicacion*@
+
+
+<h1>Hello @Utilidades.Upper(nombre)</h1>
+
+<button @onclick=@click>Click</button>
+
+@* asi se llama al componente *@
+@*<ListadoPelicula peliculas="ObtenerPeliculas()"/>*@
+<ListadoPelicula @ref="listadoPelicula" peliculas=Peliculas />
+    @* para hacer redenFrangmen y pasar contenido a los componentes*@
+    @*<img alt="cargando" src="https://media3.giphy.com/media/3oEjI6SIIHBdRxXI40/200w.gif?cid=6c09b952ba2mr6ur9tpz6qpif7w9538mlw6vtekcsnlgnral&ep=v1_gifs_search&rid=200w.gif&ct=g" />*@
+
+<button @onclick="AgregarPelicula">Agregar</button>
+
+<h3>Crear nueva pelicula</h3>
+<EjemploTexbox Placeholder="Nombre pelicula"/>
+
+@* parametros arbitrarios mas usandos, si en el attribute no se pasa nada, se usa el de por defecto*@
+<EjemploTexbox palceholder="Por defecto" @attributes="@(EjemploTextboxParametros)" />
+
+<BindEvento/>
+
+<BindGetSetDemo/>
+
+<BindAfterDemo/>
+
+
+@code {
+
+    public List<Pelicula>? Peliculas { get; set; }
+    public ListadoPelicula listadoPelicula;
+
+    protected override void OnInitialized()
+    {
+        Peliculas = repositorio.ObtenerPeliculas(); //ObtenerPeliculas();
+    }
+
+    string nombre = "Nicolas";
+
+    void click()
+    {
+        Console.WriteLine("hizo click");
+    }
+
+    //List<Pelicula> ObtenerPeliculas()
+    //{
+    //    return new List<Pelicula>()
+    //    {
+    //        new Pelicula{Titulo = "Hulk", FechaLanzamiento = new DateTime(2008, 01, 01)},
+    //        new Pelicula{Titulo = "Betty", FechaLanzamiento = new DateTime(2006, 02, 01)},
+    //        new Pelicula{Titulo = "Gol", FechaLanzamiento = new DateTime(2001, 03, 01)}
+    //    };
+    //}
+
+
+
+    private Dictionary<string, object> EjemploTextboxParametros = new Dictionary<string, object>(){
+                                                                        {"placeholder", "new"},
+                                                                        {"disabled", "true"}
+                                                                    };
+
+    private void AgregarPelicula()
+    {
+        Peliculas.Add(new Pelicula { Titulo = "Nuevo", FechaLanzamiento = DateTime.Today });
+    }
+
+    private void LimpiarPeliculas()
+    {
+        listadoPelicula.LimpiarPelicula();
+    }
+}

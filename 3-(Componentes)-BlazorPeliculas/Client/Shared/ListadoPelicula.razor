@@ -1,0 +1,83 @@
+﻿@inject IJSRuntime js
+
+<div>
+
+    @* onchange es cuando se preoduce algun cambio  *@
+    @* <input type="checkbox" @onchange="@(() => MostrarBotones = !MostrarBotones)"><span>Mostrar Pelicula</span> *@
+
+    @* sincroniza el checkbox con la variable *@
+    <input type="checkbox" @bind="MostrarBotones"><span>Mostrar Pelicula</span>
+
+    <ListadoGenerico Listado="peliculas">
+        <HayRegistros Context = "pelicula">
+            <PeliculaIndividual pelicula="pelicula" 
+                                MostrarBotones="MostrarBotones"
+                                EliminarPelicula="EliminarPelicula"/>
+        </HayRegistros>
+    </ListadoGenerico>
+
+</div>
+
+
+@code {
+
+    //el listado de peliculas va hacer el parametro
+    [Parameter]
+    //parametro si o si obligatorio
+    [EditorRequired]
+    public List<Pelicula> peliculas { get; set; }
+
+    public void LimpiarPelicula()
+    {
+        if (peliculas is not null)
+        {
+            peliculas.Clear();
+        }
+    }
+
+    protected override void OnInitialized()
+    {
+        Console.WriteLine($"OnInitialized - cantidad peliculas: {peliculas!.Count}");
+    }
+
+    //se ejecuta por fuera del componente
+    protected override void OnParametersSet()
+    {
+        Console.WriteLine($"OnParametersSet - cantidad peliculas: {peliculas!.Count}");
+    }
+
+    protected override void OnAfterRender(bool primeraRenderizacion)
+    {
+        Console.WriteLine("OnInitialized: Primero: " + primeraRenderizacion);
+    }
+
+    protected override bool ShouldRender()
+    {
+        Console.WriteLine("ShouldRender");
+        return true;
+    }
+
+    private async Task EliminarPelicula(Pelicula pelicula)
+    {
+        var confirmado = await js.Confirm($"Desea borrar {pelicula.Titulo}?");
+
+        if (confirmado)
+        {
+            peliculas.Remove(pelicula);
+        }
+
+        
+    }
+
+    //ciclo de vida de un componente
+    // protected override async Task OnInitializedAsync()
+    // {
+    //     await Task.Delay(3000);
+    //     peliculas = ObtenerPeliculas();
+    // }
+
+    bool MostrarBotones = true;
+
+    
+
+}
