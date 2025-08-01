@@ -1,0 +1,10 @@
+﻿* Page: root 
+* App.razor: para manejar el root de las paginas, para cuando encuentra y no
+* NavigationManager: Para navegar atraves de los links
+* Parametros Ruta: para colocar parametros en la url 
+* NavLinks: Para navegar 
+* Lazy Loading: para cargar las dll en el componente que se use. Esto se configura en el App.razor y 
+  en el proyecto .Client
+* Creacion de formulario
+* Validar formulario
+* Evitar que el usuario salga del formulario sin hacer los cambios 

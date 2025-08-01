@@ -1,7 +1,10 @@
 ﻿using BlazorPeliculas.Shared.DTOs;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using System.Data;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -52,6 +55,19 @@ namespace BlazorPeliculas.Server.Controllers
             {
                 return BadRequest("Intento de login fallido");
             }
+        }
+
+        //para renovar el tokem mientras que el usuario use la app
+        [HttpGet("renovarToken")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public async Task<ActionResult<UserTokenDTO>> Renovar()
+        {
+            var userInfo = new UserInfo()
+            {
+                Email = HttpContext.User.Identity!.Name
+            };
+
+            return await BuildToken(userInfo);
         }
 
         private async  Task<UserTokenDTO> BuildToken(UserInfo userInfo)

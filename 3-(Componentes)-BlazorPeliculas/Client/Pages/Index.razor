@@ -10,7 +10,6 @@
     <meta neme="description" content="Pagina pelicula"/>
 </HeadContent>
 
-<button @onclick="LimpiarPeliculas">Limpiar peliculas</button>
 
 <p>Valor del singleton: @singleton.valor</p>
 
@@ -30,10 +29,13 @@ En Shared se guardan los componentes no rooteables que se reutilizan en toda la 
 
 <button @onclick="AgregarPelicula">Agregar</button>
 
+<button @onclick="LimpiarPeliculas">Limpiar peliculas</button>
+
 <h3>Crear nueva pelicula</h3>
 <EjemploTexbox Placeholder="Nombre pelicula"/>
 
 @* parametros arbitrarios mas usandos, si en el attribute no se pasa nada, se usa el de por defecto*@
+@*por defecto va de izquierda a derecha*@
 <EjemploTexbox palceholder="Por defecto" @attributes="@(EjemploTextboxParametros)" />
 
 <BindEvento/>
@@ -46,7 +48,14 @@ En Shared se guardan los componentes no rooteables que se reutilizan en toda la 
 @code {
 
     public List<Pelicula>? Peliculas { get; set; }
+
     public ListadoPelicula listadoPelicula;
+
+    //para llamar un metodo publico de otro Componente
+    private void LimpiarPeliculas()
+    {
+        listadoPelicula.LimpiarPelicula();
+    }
 
     protected override void OnInitialized()
     {
@@ -82,8 +91,5 @@ En Shared se guardan los componentes no rooteables que se reutilizan en toda la 
         Peliculas.Add(new Pelicula { Titulo = "Nuevo", FechaLanzamiento = DateTime.Today });
     }
 
-    private void LimpiarPeliculas()
-    {
-        listadoPelicula.LimpiarPelicula();
-    }
+    
 }

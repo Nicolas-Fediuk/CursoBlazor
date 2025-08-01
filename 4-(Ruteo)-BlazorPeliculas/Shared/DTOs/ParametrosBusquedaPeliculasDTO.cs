@@ -22,7 +22,5 @@ namespace BlazorPeliculas.Shared.DTOs
         public bool EnCartelera { get; set; }
         public bool Estrenos { get; set; }
         public bool MasVotadas { get; set; }
-
-
     }
 }

@@ -1,4 +1,7 @@
 ﻿@inherits LayoutComponentBase
+@inject BlazorPeliculas.Client.Auth.RenovardorToken renovadorToken 
+@inject IJSRuntime js
+@inject NavigationManager navigationManager
 
 <div class="page">
     <div class="sidebar">
@@ -19,3 +22,24 @@
     </main>
 </div>
 
+@code{
+    [CascadingParameter]
+    public Task<AuthenticationState> AuthenticationStateTask { get; set; } = null!;
+
+
+    protected async override Task OnInitializedAsync()
+    {
+        await js.InvokeVoidAsync("timerInactivo", DotNetObjectReference.Create(this));
+        renovadorToken.Iniciar();
+    }
+
+    [JSInvokable]
+    public async Task Logout()
+    {
+        var authState = await AuthenticationStateTask;
+        if (authState.User.Identity!.IsAuthenticated)
+        {
+            navigationManager.NavigateTo("logout");
+        }
+    }
+}

@@ -18,6 +18,8 @@ builder.Services.AddSweetAlert2();
 
 builder.Services.AddAuthorizationCore();
 
+builder.Services.AddScoped<RenovardorToken>();
+
 builder.Services.AddScoped<ProveedorAutenticacionJWT>();
 builder.Services.AddScoped<AuthenticationStateProvider, ProveedorAutenticacionJWT>(proveedor =>
 proveedor.GetRequiredService<ProveedorAutenticacionJWT>());

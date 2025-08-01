@@ -1,0 +1,24 @@
+﻿* Data binding: para enlazar el input con el valor de una variable 
+* Bind Event: Para ponerle otro evento al bind, ejemplo: OnInput
+* Bind get y set: Get para tomar el valor de la variable, set para transformala
+* Bind After: Sucede despues de que el valor del Bind cambia
+* EventCallback: Para el componente padre defina el comportamiento, para pasar eventos
+* RenderFragment: Para pasar contenido (boton, formulario, etc).
+* Ciclo de vida de un Componente:
+  OnInitialized: Cuando se llama a componente
+  OnParametersSet: Cuando se llama al metodo desde afuera del componente
+  ShouldRender: Para no reederizar un Componente
+* Inyeccion: 
+  Singleton: Vive cuando lo inicia el usuario en toda la pestaña, si cambia o refresca se reinicia
+  Transient: Vive hasta que sale del componente
+* PageTitle, HeadContent
+* Counter.razor.cs para separar del html del c#
+* Layout: se configura en el App.razor
+* Invocar metodos de js con c#
+* Invocar metodos de c# con js
+* Aislamiento de js (ejecutar el archivo cuando lo diga)
+* Aislamiento de css
+* Referencias de Componentes
+* Parametros de cascada: estos parametros son creados en el elemento padre y usados por
+  sus hijos
+  

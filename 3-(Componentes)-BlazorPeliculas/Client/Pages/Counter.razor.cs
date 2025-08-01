@@ -59,11 +59,12 @@ namespace BlazorPeliculas.Client.Pages
 
         private async Task IncrementCountJs()
         {
-            //paso una instancia de la clase Counter
+            //this: paso una instancia de la clase Counter
             await js.InvokeVoidAsync("pruebaPuntoNetInstancia",
                 DotNetObjectReference.Create(this));
         }
 
+        //para ejecutar metodos de c# desde js
         [JSInvokable]
         public static Task<int> ObtenerCurrentCount()
         {

@@ -1,6 +1,9 @@
 ﻿<h3>BindAfterDemo</h3>
 
-@*trabaja de manera asincrona naca vez que edite busqueda *@
+@*trabaja de manera asincrona cada vez que edite busqueda
+busca a medida que voy escribiendo.
+Sucede despues de que el valor del Bind cambia
+*@
 <input type="text" @bind="busqueda" @bind:after="Buscar"/>
 
 <p>

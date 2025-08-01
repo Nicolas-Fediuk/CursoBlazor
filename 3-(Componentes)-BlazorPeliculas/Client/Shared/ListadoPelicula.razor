@@ -3,13 +3,17 @@
 <div>
 
     @* onchange es cuando se preoduce algun cambio  *@
-    @* <input type="checkbox" @onchange="@(() => MostrarBotones = !MostrarBotones)"><span>Mostrar Pelicula</span> *@
+    @* <input type="checkbox" @onchange="@(() => MostrarBotones = !MostrarBotones)">
 
-    @* sincroniza el checkbox con la variable *@
+    <span>Mostrar Pelicula</span> *@
+
+    @* sincroniza el checkbox con la variable, esto es Data Binding *@
     <input type="checkbox" @bind="MostrarBotones"><span>Mostrar Pelicula</span>
 
     <ListadoGenerico Listado="peliculas">
+        @*context=pelicula es Listado en el componente*@
         <HayRegistros Context = "pelicula">
+            @*le paso la pelicula del context del componente que lo itera*@
             <PeliculaIndividual pelicula="pelicula" 
                                 MostrarBotones="MostrarBotones"
                                 EliminarPelicula="EliminarPelicula"/>
@@ -40,17 +44,19 @@
         Console.WriteLine($"OnInitialized - cantidad peliculas: {peliculas!.Count}");
     }
 
-    //se ejecuta por fuera del componente
+    //se ejecuta por fuera del componente, cuando el parametro cambia por fuera del componente
     protected override void OnParametersSet()
     {
         Console.WriteLine($"OnParametersSet - cantidad peliculas: {peliculas!.Count}");
     }
 
+    //despues de la renderizacion de los compoenente
     protected override void OnAfterRender(bool primeraRenderizacion)
     {
         Console.WriteLine("OnInitialized: Primero: " + primeraRenderizacion);
     }
 
+    //para renderizar o no
     protected override bool ShouldRender()
     {
         Console.WriteLine("ShouldRender");

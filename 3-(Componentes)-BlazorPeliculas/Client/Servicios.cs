@@ -11,7 +11,8 @@ namespace BlazorPeliculas.Client
     }
 
     //Transient: para cada servicio el valor cambia
-    //sobrevive en la sesin del componente 
+    //sobrevive en la sesion del componente.
+    //Si se cambia de componente, ese muere
     public class ServicioTransient
     {
         public int valor { get; set; }

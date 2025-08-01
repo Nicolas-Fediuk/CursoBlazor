@@ -1,4 +1,6 @@
 ﻿@inject SweetAlertService swal
+
+@*para ver el estado del formulario*@
 <NavigationLock OnBeforeInternalNavigation="OnBeforeInternalNavigation"></NavigationLock>
 
 @*OnSubmit="Crear" para solo enviarlo, simpre permite el posteo del formulario*@
@@ -27,10 +29,13 @@
 </EditForm>
 
 @code {
+
+    //para ver el estado del formulario
     private EditContext editContext;
 
     protected override void OnInitialized()
     {
+        //para agregarle el objeto modelo al edit 
         editContext = new(genero);
     }
 
@@ -38,12 +43,15 @@
     [Parameter]
     public Genero genero { get; set; }
 
+    //el padre manda el metodo a ajecutar
     [EditorRequired]
     [Parameter]
     public EventCallback OnValidSubmit { get; set; }
 
+    //Para ver si el usuario lo posteo, con referencia lo cambiamos
     public bool FormularioPosteadoConExito { get; set; } = false;
 
+    //metodo para validar los cambios del formulario
     private async Task OnBeforeInternalNavigation(LocationChangingContext context)
     {
         var formularioFueEditado = editContext.IsModified();

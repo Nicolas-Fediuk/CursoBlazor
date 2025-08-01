@@ -9,6 +9,7 @@
 @if (MostrarBotones)
 {
     <div>
+        @*para seleccionar la pelicula de devolverlo al padre*@
         <button @onclick="@(() => EliminarPelicula.InvokeAsync(pelicula))">Borrar</button>
     </div>
 }
@@ -17,12 +18,12 @@
 @code {
     [Parameter]
     [EditorRequired]
-    public Pelicula pelicula { get; set; }
+    public Pelicula? pelicula { get; set; }
 
     [Parameter]
     public bool MostrarBotones { get; set; } = false;
 
-    //se lo delega al componente padre 
+    //se lo delega al componente padre, le devuelve un objeto pelicula
     [Parameter]
     public EventCallback<Pelicula> EliminarPelicula { get; set; }
 }

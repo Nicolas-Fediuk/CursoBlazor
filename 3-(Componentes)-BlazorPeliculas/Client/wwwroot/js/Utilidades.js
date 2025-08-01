@@ -1,5 +1,4 @@
 ﻿//para ejecutar un metodo de c# en js
-
 function a() {
     console.log("Hola")
     DotNet.invokeMethodAsync("BlazorPeliculas.Client", "ObtenerCurrentCount")
@@ -9,7 +8,7 @@ function a() {
         })
 }
 
-
+// para ejecutar el medtodo IncrementCount de Counter
 function pruebaPuntoNetInstancia(dotnetHelper) {
     console.log("HOla desde el metodo 2")
     dotnetHelper.invokeMethodAsync("IncrementCount");

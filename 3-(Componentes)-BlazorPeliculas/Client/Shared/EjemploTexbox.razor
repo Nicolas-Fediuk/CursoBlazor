@@ -3,7 +3,7 @@
 
 @code {
     //captura valores no coincidentes
-    // en este caso podemos pasarle los atributos del campo texto 
+    // en este caso podemos pasarle todos los atributos del campo texto 
     [Parameter(CaptureUnmatchedValues = true)]
-    public Dictionary<string, object> ParametrosAdicionales { get; set; }
+    public IDictionary<string, object> ParametrosAdicionales { get; set; }
 }
